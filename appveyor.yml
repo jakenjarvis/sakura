@@ -26,3 +26,24 @@ build_script:
 
 artifacts:
 - path: 'sakura-*$(platform)-$(configuration)*.zip'
+
+
+before_deploy:
+
+deploy:
+  - provider: GitHub
+    auth_token:
+      secure: xDUB9jmTodzcvy1twsTYQ8RtANSfUvcFyOfc8df0ut/nwFdiWWS4hlOBqnxz8J/3
+
+    description: It was automatically deployed by AppVeyor CI.
+
+    draft: false
+    prerelease: false
+    force_update: true
+
+    on:
+      #branch: master
+      appveyor_repo_tag: true
+
+after_deploy:
+
