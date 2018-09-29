@@ -37,7 +37,27 @@ deploy:
     force_update: true
 
     on:
+      appveyor_repo_tag: true
       #branch: master
+      configuration: Release
+      artifact: .*(All|Exe|Installer).zip$
+
+  - provider: BinTray
+    api_key:
+      secure: a9zo/A84vMQm/kJN2p2TlvWTEdXv5r7bC5ayOaFKxJokBuRdLdm2EKo2klkc8Yxm
+
+    description: It was automatically deployed by AppVeyor CI.
+
+    username: jakenjarvis
+    subject: jakenjarvis
+    repo: Generic
+    package: sakura-editor-informal
+    version: sakura-*$(platform)-$(configuration)*
+    publish: true
+    override: true
+    explode: false
+
+    on:
       appveyor_repo_tag: true
 
 after_deploy:
