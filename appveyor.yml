@@ -30,6 +30,7 @@ deploy:
     auth_token:
       secure: xDUB9jmTodzcvy1twsTYQ8RtANSfUvcFyOfc8df0ut/nwFdiWWS4hlOBqnxz8J/3
 
+    artifact: /sakura.*(All|Exe|Installer)\.zip/
     description: It was automatically deployed by AppVeyor CI.
 
     draft: false
@@ -40,9 +41,6 @@ deploy:
       appveyor_repo_tag: true
       #branch: master
       configuration: Release
-      artifact: *-All.zip
-      artifact: *-Exe.zip
-      artifact: *-Installer.zip
 
   - provider: BinTray
     api_key:
