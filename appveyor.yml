@@ -2,8 +2,8 @@ version: 1.0.{build}
 image: Visual Studio 2017
 
 configuration:
-  - Release
   - Debug
+  - Release
 
 platform:
   - Win32
@@ -40,7 +40,9 @@ deploy:
       appveyor_repo_tag: true
       #branch: master
       configuration: Release
-      artifact: .*(All|Exe|Installer).zip
+      artifact: *-All.zip
+      artifact: *-Exe.zip
+      artifact: *-Installer.zip
 
   - provider: BinTray
     api_key:
@@ -52,7 +54,7 @@ deploy:
     subject: jakenjarvis
     repo: sakura-editor-informal
     package: sakura
-    #version: sakura-*$(platform)-$(configuration)*
+    version: $(APPVEYOR_REPO_TAG_NAME)
     publish: true
     override: true
     explode: false
